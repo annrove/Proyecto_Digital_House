@@ -1,12 +1,17 @@
 const autos = require('./autos')
+//Esto fue explicado por Fabio para que visualizara que la función podía funcionar fuera del array de objetos concesionaria
+/*buscarAuto = function(patente){ 
+   //console.log('patente' + patente);
+return autos.find(auto => auto.patente == patente) || null;
+}*/
 let concesionaria = {
     /* completar */
       autos: autos,
-      buscarAuto : function(patente){
-      return autos.find(auto => auto[patente] == patente) || null;
+      buscarAuto : function(patente){ 
+         //console.log('patente' + patente);
+      return autos.find(auto => auto.patente == patente) || null;
       },
-      /*venderAuto: function(patente){
-      for (let i = 0; i < autos.length; i++){
+      venderAuto: function(patente){
          let auto  = this.buscarAuto(patente);
          if (!auto){
             return 'El auto no existe, no está registrado'; 
@@ -16,7 +21,10 @@ let concesionaria = {
          }
          auto.vendido =  true;
          return 'El auto fue vendido correctamente';
-         }
-      }*/   
-}
-console.log(concesionaria.buscarAuto("A123"));
+      },
+      autosParaLaVenta: () => {
+         return autos.filter(auto => auto.vendido == false);
+      }      
+}   
+//console.log(buscarAuto());
+console.log(concesionaria.autosParaLaVenta());
